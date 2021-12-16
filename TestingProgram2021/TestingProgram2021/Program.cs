@@ -36,9 +36,19 @@ namespace TestingProgram2021
                 Console.WriteLine("Logged in successfully, Test Passed");
             }
             else
-                {
+            {
                 Console.WriteLine("Log in failed");
-                }
+            }
+            //identify Administrator dropdown listbox and click on it
+            IWebElement administrationListBox = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
+            administrationListBox.Click();
+            //Identify Time & Materials and select
+            IWebElement timeandmaterialOption = driver.FindElement(By.XPath("/ html / body / div[3] / div / div / ul / li[5] / ul / li[3] / a"));
+            timeandmaterialOption.Click();
+            //click on Create New button
+            IWebElement createNewButton = driver.FindElement(By.XPath("//*[@id='container']/p/a"));
+            createNewButton.Click();
+            
         }
     }
 }
