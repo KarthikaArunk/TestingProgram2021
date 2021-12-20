@@ -102,7 +102,63 @@ namespace TestingProgram2021
             {
                 Console.WriteLine("Test Failed");
             }
-        }
+
+            // Identify Edit button  and click on that
+            IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+            editButton.Click();
+             Thread.Sleep(3000);
+
+            //Identify option 'Material'  and click on it
+            //IWebElement materialSelect1 = driver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[1]"));
+            //materialSelect1.Click();
+            //Thread.Sleep(5000);
+
+            //Identify code textbox and Edit code
+            IWebElement codeTextBox1 = driver.FindElement(By.Id("Code"));
+               codeTextBox1.Clear();
+               codeTextBox1.SendKeys("code31");
+
+           //Identify 'Description' and edit 
+            IWebElement descriptionTextBox1 = driver.FindElement(By.Id("Description"));
+            descriptionTextBox1.Clear();
+            descriptionTextBox1.SendKeys("Material31");
+            Thread.Sleep(5000);
+                
+            //Identify price testbox and enter valid price
+            IWebElement priceTag = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
+            IWebElement priceTextbox1 = driver.FindElement(By.Id("Price"));
+
+            priceTag.Click();
+            priceTextbox1.Clear();
+            priceTag.Click();
+            priceTextbox1.SendKeys("100");
+            Thread.Sleep(5000);
+
+            //Identify save button and click on it
+
+            IWebElement saveButton1 = driver.FindElement(By.Id("SaveButton"));
+            saveButton1.Click();
+            Thread.Sleep(2000);
+
+            //Identify lastpagebutton and click on it
+            IWebElement lastPageButton1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+            lastPageButton1.Click();
+            Thread.Sleep(2000);
+
+            // Identify code & make sure that the record is added to the table
+
+            IWebElement codeDetail1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+
+            if (codeDetail1.Text == "code31")
+            {
+                Console.WriteLine("Record Edited successfully, Test Passed");
+            }
+            else
+            {
+                Console.WriteLine("Test Failed");
+            }
         
+        }
+
     }
 }
