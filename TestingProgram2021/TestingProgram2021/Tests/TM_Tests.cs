@@ -10,26 +10,17 @@ using TestingProgram2021.Utilities;
 namespace TestingProgram2021 
 {
     [TestFixture]   
+    [Parallelizable]
     class TM_Tests : CommonDriver
     {
-     [OneTimeSetUp]
-        public void LoginFunction()
-        {
-            driver = new ChromeDriver();
-            //Login page object initialization and definition
-
-            LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginSteps(driver);
-       
-        // Homepage object initialization and definition
-        HomePage homePageObj = new HomePage();
-            homePageObj.GoToTMPage(driver);
-        }
-
-
+          
         [Test, Order (1),Description("Check if user is able to create a Material record with valid data")]
         public void CreateTM_Test()
         {
+            // Homepage object initialization and definition
+            //HomePage homePageObj = new HomePage();
+            //homePageObj.GoToTMPage(driver);
+
             //TMpage object initialization and definition
 
             TMPage tmPageObj = new TMPage();
@@ -39,27 +30,28 @@ namespace TestingProgram2021
         [Test, Order (2),Description("Check if user is able to edit a Material record with valid data")]
         public void EditTM_Test()
         {
+            // Homepage object initialization and definition
+            
+           // homePageObj.GoToTMPage(driver);
+
             //TMPage Edit obj definition
-           
+
             TMPage tmPageObjedit = new TMPage();
-            tmPageObjedit.EditTM(driver);
+            tmPageObjedit.EditTM(driver,"dummy","dummy");
         }
 
         [Test, Order (3),Description("Check if user is able to delete an existing Material record")]
         public void DeleteTM_Test()
         {
+            // Homepage object initialization and definition
+            HomePage homePageObj = new HomePage();
+            homePageObj.GoToTMPage(driver);
 
             //TMPage Delete obj definition
             TMPage tmPageObjdelete = new TMPage();
             tmPageObjdelete.DeleteTM(driver);
 
         }
-
-        [OneTimeTearDown]
-        public void CloseTestRun()
-        {
-            driver.Quit();
-        }
-
+     
     }
 }
